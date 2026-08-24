@@ -56,7 +56,7 @@ function App() {
   return (
     <div className="site">
       <header className="navbar">
-        <a href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" className="brand" onClick={closeMenu}>
+        <a href="#" className="brand" onClick={closeMenu}>
           <span className="brand-mark">
             <Home size={20} strokeWidth={2.5} />
           </span>
@@ -68,7 +68,7 @@ function App() {
           <a href="#how" onClick={closeMenu}>How It Works</a>
           <a href="#owners" onClick={closeMenu}>For Landlords</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
-          <a className="nav-download" href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" onClick={closeMenu}>
+          <a className="nav-download" href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" download onClick={closeMenu}>
             <Download size={16} />
             Download App
           </a>
@@ -106,7 +106,7 @@ function App() {
                 Find an Apartment
                 <ArrowRight size={18} />
               </a>
-              <a href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" className="secondary-button">
+              <a href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" className="secondary-button" download>
                 <Smartphone size={18} />
                 Get the App
               </a>
@@ -461,7 +461,7 @@ function App() {
       <footer>
         <div className="footer-main">
           <div className="footer-brand">
-            <a href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" className="brand">
+            <a href="#" className="brand">
               <span className="brand-mark"><Home size={19} /></span>
               JUMAA
             </a>
@@ -497,7 +497,7 @@ function App() {
             <h4>Explore</h4>
             <a href="#apartments">Apartments</a>
             <a href="#how">How It Works</a>
-            <a href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk">Download App</a>
+            <a href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" download>Download App</a>
           </div>
 
           <div className="footer-column">
