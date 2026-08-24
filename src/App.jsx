@@ -29,21 +29,21 @@ const apartments = [
     location: "Nakuru • Nakuru Town",
     price: "KSh 12,000",
     image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=70",
   },
   {
     name: "JUMAA Heights",
     location: "Nairobi • Kasarani",
     price: "KSh 15,000",
     image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=70",
   },
   {
     name: "Palm Residence",
     location: "Bomet • Bomet Town",
     price: "KSh 10,000",
     image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=70",
   },
 ];
 
@@ -231,7 +231,7 @@ function App() {
             {apartments.map((apartment) => (
               <article className="apartment-card" key={apartment.name}>
                 <div className="apartment-image">
-                  <img src={apartment.image} alt={apartment.name} />
+                  <img loading="lazy" decoding="async" src={apartment.image} alt={apartment.name} />
                   <div className="image-shade" />
                   <span className="verified-badge">
                     <CheckCircle2 size={14} /> Verified
@@ -263,7 +263,7 @@ function App() {
         <section id="how" className="how-section">
           <div className="how-image">
             <img
-              src="https://images.unsplash.com/photo-1600607687920-4ae2a09cf159?auto=format&fit=crop&w=1400&q=90"
+              src="https://images.unsplash.com/photo-1600607687920-4ae2a09cf159?auto=format&fit=crop&w=700&q=70"
               alt="Beautiful apartment interior"
             />
             <div className="how-image-label">
