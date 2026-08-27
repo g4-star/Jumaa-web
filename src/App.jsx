@@ -101,8 +101,28 @@ const apartments = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [county, setCounty] = useState("");
+  const [ownerUnits, setOwnerUnits] = useState("");
 
   const closeMenu = () => setMenuOpen(false);
+
+  const unitCount = Number(ownerUnits) || 0;
+
+  const ownerPlan =
+    unitCount >= 201
+      ? { name: "201+ Units", price: "Custom", amount: null }
+      : unitCount >= 101
+        ? { name: "51–60 Units", price: "KSh 5,000", amount: 5000 }
+        : unitCount >= 51
+          ? { name: "41–50 Units", price: "KSh 3,500", amount: 3500 }
+          : unitCount >= 31
+            ? { name: "31–40 Units", price: "KSh 2,000", amount: 2000 }
+            : unitCount >= 21
+              ? { name: "21–30 Units", price: "KSh 1,500", amount: 1500 }
+              : unitCount >= 11
+                ? { name: "11–20 Units", price: "KSh 1,000", amount: 1000 }
+                : unitCount >= 1
+                  ? { name: "1–10 Units", price: "KSh 500", amount: 500 }
+                  : { name: "Select your units", price: "—", amount: null };
 
   return (
     <div className="site">
@@ -117,7 +137,7 @@ function App() {
         <nav className={menuOpen ? "nav-links open" : "nav-links"}>
           <a href="#apartments" onClick={closeMenu}>Apartments</a>
           <a href="#how" onClick={closeMenu}>How It Works</a>
-          <a href="#owners" onClick={closeMenu}>For Landlords</a>
+          <a href="#owners" onClick={closeMenu}>For Property Owners</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
           <a className="nav-download" href="https://github.com/g4-star/Jumaa-web/releases/download/v1.0.0/JUMAA-Android.apk" download onClick={closeMenu}>
             <Download size={16} />
@@ -452,46 +472,227 @@ function App() {
         <section id="owners" className="owners-section">
           <div className="owners-content">
             <span className="section-label">FOR PROPERTY OWNERS</span>
-            <h2>Have apartments<br /><em>to rent?</em></h2>
+
+            <h2>Why does JUMAA<br /><em>charge a property fee?</em></h2>
+
             <p>
-              Put your property in front of people actively searching for
-              their next home.
+              JUMAA is more than an apartment listing website. The platform
+              provides property owners with a digital system for keeping their
+              apartments visible, organized and accessible to people searching
+              for homes.
             </p>
 
             <div className="owner-features">
-              <div><Building2 /> Register your apartment</div>
-              <div><Home /> Add photos and property details</div>
-              <div><Users /> Manage available units</div>
-              <div><MessageCircle /> Connect with potential tenants</div>
+              <div><Building2 /> Keep your property active on JUMAA</div>
+              <div><Smartphone /> Maintain the JUMAA digital platform</div>
+              <div><ShieldCheck /> Support trusted property information</div>
+              <div><Users /> Help connect properties with potential tenants</div>
             </div>
 
-            <a href={`tel:+254${PHONE.slice(1)}`} className="outline-button">
-              Contact JUMAA <ArrowRight size={17} />
-            </a>
+            <div className="owner-payment-note">
+              <ShieldCheck size={20} />
+              <div>
+                <strong>Paid by the property owner</strong>
+                <p>
+                  This is a monthly JUMAA service subscription for the
+                  property owner or authorized property manager.
+                  <b> It is not paid by tenants and it is not added to rent.</b>
+                </p>
+              </div>
+            </div>
+
+            <div className="owner-free-month-note">
+              <div className="free-month-badge">1 MONTH FREE</div>
+              <div>
+                <strong>Your first month is free.</strong>
+                <p>
+                  Every property owner receives one month free when joining
+                  JUMAA. The subscription fee becomes payable from the
+                  <b> second month onward.</b>
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="owners-visual">
-            <div className="owner-panel">
+            <div className="owner-form-panel billing-panel payment-reason-panel">
               <div className="panel-top">
-                <span>PROPERTY DASHBOARD</span>
-                <span className="live"><i /> LIVE</span>
+                <span>WHY JUMAA?</span>
+                <span className="live"><i /> OWNER SERVICE</span>
               </div>
-              <div className="panel-property">
-                <img src={apartments[0].image} alt="" />
+
+              <div className="payment-reason-icon">
+                <ShieldCheck size={30} />
+              </div>
+
+              <div className="payment-reason-content">
+                <small>JUMAA PROPERTY SERVICE</small>
+                <h3>Your subscription keeps your property connected.</h3>
+
+                <p>
+                  The monthly subscription helps keep JUMAA active, reliable
+                  and efficient. It supports the continuous running,
+                  maintenance, improvements, updates and support of the
+                  platform and its services.
+                </p>
+              </div>
+
+              <div className="reason-list">
                 <div>
-                  <strong>GreenView Apartments</strong>
-                  <span>Nakuru, Kenya</span>
+                  <CheckCircle2 size={17} />
+                  <span>Keep your property active on JUMAA</span>
+                </div>
+
+                <div>
+                  <CheckCircle2 size={17} />
+                  <span>Continuous platform maintenance</span>
+                </div>
+
+                <div>
+                  <CheckCircle2 size={17} />
+                  <span>Regular system improvements and updates</span>
+                </div>
+
+                <div>
+                  <CheckCircle2 size={17} />
+                  <span>Technology, reliability and support</span>
                 </div>
               </div>
-              <div className="panel-stats">
-                <div><strong>32</strong><span>Units</span></div>
-                <div><strong>18</strong><span>Available</span></div>
-                <div><strong>247</strong><span>Views</span></div>
+
+              <div className="owner-not-tenant">
+                <strong>Important</strong>
+                <span>
+                  This subscription is paid by the property owner or
+                  authorized property manager — <b>not by tenants.</b>
+                </span>
               </div>
-              <div className="panel-line" />
-              <div className="panel-row"><span>Property status</span><b>Active</b></div>
-              <div className="panel-row"><span>Listing visibility</span><b>Public</b></div>
+
+              <a href="#owner-billing" className="primary-button owner-submit">
+                View JUMAA Billing
+                <ArrowRight size={18} />
+              </a>
             </div>
+          </div>
+        </section>
+
+        <section id="owner-billing" className="owner-billing-section">
+          <div className="section-center">
+            <span className="section-label">JUMAA BILLING</span>
+            <h2>Simple pricing.<br /><em>Built for property owners.</em></h2>
+            <p>
+              JUMAA uses a transparent monthly service subscription based on
+              the number of units in a property. This fee supports the
+              technology and services that keep properties connected to JUMAA.
+            </p>
+          </div>
+
+          <div className="billing-table">
+            <div className="billing-table-head">
+              <span>PROPERTY SIZE</span>
+              <span>MONTHLY JUMAA SERVICE</span>
+            </div>
+
+            <div className="billing-table-row">
+              <span>1–10 units</span>
+              <strong>KSh 1,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>11–20 units</span>
+              <strong>KSh 2,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>21–30 units</span>
+              <strong>KSh 3,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>31–40 units</span>
+              <strong>KSh 4,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>41–50 units</span>
+              <strong>KSh 5,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>51–60 units</span>
+              <strong>KSh 6,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>61–70 units</span>
+              <strong>KSh 7,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>71–80 units</span>
+              <strong>KSh 8,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>81–90 units</span>
+              <strong>KSh 9,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>91–100 units</span>
+              <strong>KSh 10,000 / month</strong>
+            </div>
+
+            <div className="billing-table-row">
+              <span>101+ units</span>
+              <strong>Custom plan</strong>
+            </div>
+                    </div>
+
+          <div className="billing-owner-message">
+            <ShieldCheck size={22} />
+            <div>
+              <strong>Important: Owner-paid subscription</strong>
+              <p>
+                These monthly charges are for the apartment/property owner
+                or authorized property manager. <b>Tenants do not pay the
+                JUMAA property subscription.</b>
+              </p>
+            </div>
+          </div>
+
+          <div className="billing-free-month">
+            <div className="billing-free-icon">
+              <CheckCircle2 size={22} />
+            </div>
+            <div>
+              <strong>First month FREE — subscription starts in month two</strong>
+              <p>
+                Every property owner receives their first month free.
+                The applicable monthly JUMAA service fee is payable from
+                the second month onward.
+              </p>
+            </div>
+          </div>
+
+          <div className="billing-purpose">
+            <div>
+              <span className="section-label">WHAT THE FEE SUPPORTS</span>
+              <h3>Keeping JUMAA active, reliable & efficient.</h3>
+              <p>
+                Your subscription helps support the continuous running and
+                maintenance of the JUMAA platform, including system
+                improvements, updates, reliability, security and ongoing
+                support. This helps maintain an active and efficient service
+                for property owners and people searching for homes.
+              </p>
+            </div>
+          </div>
+
+          <div className="billing-actions">
+            <a href="#contact" className="primary-button">
+              Contact JUMAA
+              <ArrowRight size={18} />
+            </a>
           </div>
         </section>
 
@@ -596,8 +797,8 @@ function App() {
           </div>
 
           <div className="footer-column">
-            <h4>For Owners</h4>
-            <a href="#owners">List Your Apartment</a>
+            <h4>For Property Owners</h4>
+            <a href="#owners">Plans & Billing</a>
             <a href="#contact">Contact JUMAA</a>
           </div>
 
