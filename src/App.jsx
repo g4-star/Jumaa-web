@@ -68,7 +68,7 @@ function App() {
           <a href="#how" onClick={closeMenu}>How It Works</a>
           <a href="#owners" onClick={closeMenu}>For Landlords</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
-          <a className="nav-download" href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" download onClick={closeMenu}>
+          <a className="nav-download" href="https://github.com/g4-star/Jumaa-web/releases/download/v1.0.0/JUMAA-Android.apk" download onClick={closeMenu}>
             <Download size={16} />
             Download App
           </a>
@@ -106,7 +106,7 @@ function App() {
                 Find an Apartment
                 <ArrowRight size={18} />
               </a>
-              <a href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" className="secondary-button" download>
+              <a href="https://github.com/g4-star/Jumaa-web/releases/download/v1.0.0/JUMAA-Android.apk" className="secondary-button" download>
                 <Smartphone size={18} />
                 Get the App
               </a>
@@ -497,7 +497,7 @@ function App() {
             <h4>Explore</h4>
             <a href="#apartments">Apartments</a>
             <a href="#how">How It Works</a>
-            <a href="https://github.com/g4-star/Jumaa-/releases/download/v1.0.0/JUMAA-Android.apk" download>Download App</a>
+            <a href="https://github.com/g4-star/Jumaa-web/releases/download/v1.0.0/JUMAA-Android.apk" download>Download App</a>
           </div>
 
           <div className="footer-column">
