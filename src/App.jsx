@@ -169,7 +169,7 @@ function App() {
 
             <p>
               Discover apartments across Kenya, search by location and connect
-              directly with property owners through JUMAA.
+              directly with property owners through JUMAA mobile App.
             </p>
 
             <div className="hero-actions">
@@ -476,7 +476,7 @@ function App() {
             <h2>Why does JUMAA<br /><em>charge a property fee?</em></h2>
 
             <p>
-              JUMAA is more than an apartment listing website. The platform
+              JUMAA is more than an apartment listing APP. The platform
               provides property owners with a digital system for keeping their
               apartments visible, organized and accessible to people searching
               for homes.
