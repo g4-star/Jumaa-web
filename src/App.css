@@ -1441,3 +1441,233 @@ footer {
   font-size: 16px;
 }
 
+
+/* ============================================================
+   JUMAA INFINITE APARTMENT GALLERY
+   ============================================================ */
+
+.apartment-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0 30px;
+}
+
+.apartment-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: jumaaApartmentScroll 45s linear infinite;
+  will-change: transform;
+}
+
+.apartment-track:hover {
+  animation-play-state: paused;
+}
+
+.apartment-track .apartment-card {
+  flex: 0 0 340px;
+  width: 340px;
+}
+
+@keyframes jumaaApartmentScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+.apartment-marquee::before,
+.apartment-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.apartment-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.apartment-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+@media (max-width: 768px) {
+  .apartment-marquee {
+    margin-left: -16px;
+    margin-right: -16px;
+    width: calc(100% + 32px);
+  }
+
+  .apartment-track {
+    gap: 16px;
+    animation-duration: 38s;
+  }
+
+  .apartment-track .apartment-card {
+    flex: 0 0 285px;
+    width: 285px;
+  }
+
+  .apartment-marquee::before,
+  .apartment-marquee::after {
+    width: 35px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apartment-track {
+    animation: none;
+  }
+}
+
+
+
+/* ============================================================
+   JUMAA GALLERY - DARK EDGE FIX
+   ============================================================ */
+
+.apartment-marquee::before {
+  background: linear-gradient(
+    to right,
+    #0b1512 0%,
+    rgba(11, 21, 18, 0.85) 25%,
+    transparent 100%
+  );
+}
+
+.apartment-marquee::after {
+  background: linear-gradient(
+    to left,
+    #0b1512 0%,
+    rgba(11, 21, 18, 0.85) 25%,
+    transparent 100%
+  );
+}
+
+/* Keep gallery images fully visible */
+.apartment-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ============================================================
+   FINAL JUMAA APARTMENT GALLERY
+   ============================================================ */
+
+.apartment-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0 35px;
+}
+
+.apartment-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: jumaaApartmentScroll 55s linear infinite;
+  will-change: transform;
+}
+
+.apartment-track:hover {
+  animation-play-state: paused;
+}
+
+.apartment-track .apartment-card {
+  flex: 0 0 340px;
+  width: 340px;
+}
+
+.apartment-track .apartment-image {
+  overflow: hidden;
+}
+
+.apartment-track .apartment-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes jumaaApartmentScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+/* Dark fade — never white */
+.apartment-marquee::before,
+.apartment-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 85px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.apartment-marquee::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #0b1512 0%,
+    rgba(11, 21, 18, 0.9) 30%,
+    transparent 100%
+  );
+}
+
+.apartment-marquee::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #0b1512 0%,
+    rgba(11, 21, 18, 0.9) 30%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .apartment-marquee {
+    margin-left: -16px;
+    margin-right: -16px;
+    width: calc(100% + 32px);
+  }
+
+  .apartment-track {
+    gap: 16px;
+    animation-duration: 48s;
+  }
+
+  .apartment-track .apartment-card {
+    flex: 0 0 285px;
+    width: 285px;
+  }
+
+  .apartment-marquee::before,
+  .apartment-marquee::after {
+    width: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apartment-track {
+    animation: none;
+  }
+}

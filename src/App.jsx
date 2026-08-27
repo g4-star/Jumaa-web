@@ -28,22 +28,73 @@ const apartments = [
     name: "GreenView Apartments",
     location: "Nakuru • Nakuru Town",
     price: "KSh 12,000",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=70",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
   },
   {
     name: "JUMAA Heights",
     location: "Nairobi • Kasarani",
     price: "KSh 15,000",
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=70",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
   },
   {
     name: "Palm Residence",
     location: "Bomet • Bomet Town",
     price: "KSh 10,000",
-    image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=70",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Milimani Heights",
+    location: "Nakuru • Milimani",
+    price: "KSh 18,000",
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Kasarani Gardens",
+    location: "Nairobi • Kasarani",
+    price: "KSh 16,000",
+    image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Lakeview Apartments",
+    location: "Kisumu • Milimani",
+    price: "KSh 14,000",
+    image: "https://images.unsplash.com/photo-1600607687920-4ae2a09cf159?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Riverside Residences",
+    location: "Nairobi • Westlands",
+    price: "KSh 22,000",
+    image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Green Park Homes",
+    location: "Kericho • Town",
+    price: "KSh 13,000",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Sunrise Apartments",
+    location: "Nairobi • Kilimani",
+    price: "KSh 19,000",
+    image: "https://images.unsplash.com/photo-1600585154362-7b0e8e8f6b7b?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Royal Gardens",
+    location: "Mombasa • Nyali",
+    price: "KSh 20,000",
+    image: "https://images.unsplash.com/photo-1600607687920-4ae2a09cf159?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Hilltop Residences",
+    location: "Eldoret • Kapsoya",
+    price: "KSh 11,000",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Palm Gardens",
+    location: "Kisumu • Kondele",
+    price: "KSh 12,500",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
@@ -227,11 +278,17 @@ function App() {
             </p>
           </div>
 
-          <div className="apartment-grid">
+          <div className="apartment-marquee">
+            <div className="apartment-track">
             {apartments.map((apartment) => (
               <article className="apartment-card" key={apartment.name}>
                 <div className="apartment-image">
-                  <img loading="lazy" decoding="async" src={apartment.image} alt={apartment.name} />
+                  <img loading="lazy" decoding="async" src={apartment.image}
+                    alt={apartment.name}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/images/greenview.jpg";
+                    }} />
                   <div className="image-shade" />
                   <span className="verified-badge">
                     <CheckCircle2 size={14} /> Verified
@@ -257,13 +314,51 @@ function App() {
                 </div>
               </article>
             ))}
+
+            {/* Duplicate cards for seamless infinite scrolling */}
+            {apartments.map((apartment) => (
+              <article className="apartment-card" key={`scroll-${apartment.name}`}>
+                <div className="apartment-image">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={apartment.image}
+                    alt={apartment.name}
+                  />
+                  <div className="image-shade" />
+                  <span className="verified-badge">
+                    <CheckCircle2 size={14} /> Verified
+                  </span>
+                  <button className="heart-button">♡</button>
+                  <div className="location-badge">
+                    <MapPin size={14} />
+                    {apartment.location}
+                  </div>
+                </div>
+
+                <div className="apartment-info">
+                  <h3>{apartment.name}</h3>
+                  <div className="apartment-bottom">
+                    <div>
+                      <small>From</small>
+                      <strong>{apartment.price}</strong>
+                      <small>/ month</small>
+                    </div>
+                    <a href="#contact">
+                      View <ArrowRight size={16} />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
+        </div>
         </section>
 
         <section id="how" className="how-section">
           <div className="how-image">
             <img
-              src="https://images.unsplash.com/photo-1600607687920-4ae2a09cf159?auto=format&fit=crop&w=700&q=70"
+              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=700&q=80"
               alt="Beautiful apartment interior"
             />
             <div className="how-image-label">
